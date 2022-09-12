@@ -3,13 +3,14 @@ import axios from 'axios'
 export const useGetData = () => {
     const loading = ref(true)
     const data = ref(null)
+    const error = ref(null)
     const getData = async (url) => {
         try {
             loading.value = true
             const res = await axios.get(url)
             data.value = res.data
-        } catch (error) {
-            console.log(error)
+        } catch (e) {
+            error.value = "Error de servidor"
         } finally {
             loading.value = false
         }
@@ -19,6 +20,7 @@ export const useGetData = () => {
     return {
         getData,
         data,
-        loading
+        loading,
+        error
     }
 }
