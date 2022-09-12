@@ -1,30 +1,21 @@
+<script setup>
+
+</script>
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/pokemons">Pokemons</router-link>
+  <nav class="navbar bg-light">
+    <div class="container">
+
+      <router-link class="navbar-brand" to="/">
+        <img src="@/assets/logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+        PokeApi
+      </router-link>
+      <div>
+        <router-link class="btn btn-outline-primary me-2 " to="/">Home</router-link> 
+        <router-link class="btn btn-outline-primary " to="/pokemons">Pokemons</router-link>
+      </div>
+    </div>
   </nav>
-  <router-view />
+  <div class="container">
+    <RouterView/>
+  </div>
 </template>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
