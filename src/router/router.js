@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LoginView from "../views/LoginView.vue";
 import RegisterView from "../views/RegisterView.vue";
+import EditView from "../views/EditView.vue"
 import { useUserStore } from "../store/user";
 
 const requireAuth = async (to, from, next) => {
@@ -23,6 +24,11 @@ const routes = [
     beforeEnter: requireAuth,
   },
   {
+    path: "/edit/:id",
+    component: EditView,
+    beforeEnter: requireAuth
+  },
+  {
     path: "/login",
     component: LoginView,
   },
@@ -30,6 +36,7 @@ const routes = [
     path: "/register",
     component: RegisterView,
   },
+  
 ];
 
 const router = createRouter({
