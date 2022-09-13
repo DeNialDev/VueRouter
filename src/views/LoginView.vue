@@ -1,7 +1,7 @@
 <script setup>
 
 </script>
-  
+
 <template>
-  <h1>HomeView</h1>
+    <h1>Login</h1>
 </template>
