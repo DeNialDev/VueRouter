@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 import { auth } from "@/fireBaseConfig";
 import router from "@/router/router";
+import { useDataStore } from "@/store/dataBase";
 export const useUserStore = defineStore("userStore", {
   state: () => ({
     userData: null,
@@ -47,10 +48,12 @@ export const useUserStore = defineStore("userStore", {
       }
     },
     async logOut() {
+      const dataStore = useDataStore();
       this.loadingUser = true;
       try {
         await signOut(auth);
         this.userData = null;
+        dataStore.$reset()
         router.push("/login");
       } catch (error) {
         console.log(error);
@@ -67,6 +70,8 @@ export const useUserStore = defineStore("userStore", {
               this.userData = { email: user.email, uid: user.uid };
             } else {
               this.userData = null;
+              const dataStore = useDataStore()
+              dataStore.$reset
             }
             resolve(user);
           },
